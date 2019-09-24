@@ -9,7 +9,7 @@ import {
 //import CustomIcon from "./CustomIcon";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import styles from './Styles/NavBarStyles';
+import styles from './Styles/NavBarStyle';
 
 class NavBar extends React.Component{
     pressFavorite = () =>{

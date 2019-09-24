@@ -2,16 +2,18 @@ import { createAppContainer, createStackNavigator, createBottomTabNavigator } fr
 
 import GenericScreen from "../Cointeiners/GenericScreen";
 import ExploreScreen from "../Cointeiners/ExploreScreen";
+import CategoryScreen from "../Cointeiners/CategoryScreen";
 
 const TabNav = createBottomTabNavigator(
     {
         Explore: {screen: ExploreScreen},
-        Categories: {screen: GenericScreen},
+        Categories: {screen: CategoryScreen},
         Favorites: {screen: GenericScreen},
     },
     {
         headerMode: "none",
-        initialRouteName: "Explore"
+        initialRouteName: "Explore",
+        defaultNavigationOptions: {tabBarVisible: false}
     }
 );
 

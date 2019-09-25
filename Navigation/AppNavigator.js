@@ -3,6 +3,7 @@ import { createAppContainer, createStackNavigator, createBottomTabNavigator } fr
 import GenericScreen from "../Cointeiners/GenericScreen";
 import ExploreScreen from "../Cointeiners/ExploreScreen";
 import CategoryScreen from "../Cointeiners/CategoryScreen";
+import RecipeDetailsScreen from "../Cointeiners/RecipeDetailsScreen";
 
 const TabNav = createBottomTabNavigator(
     {
@@ -20,6 +21,7 @@ const TabNav = createBottomTabNavigator(
 const AppNavigator = createStackNavigator(
     {
         Home: {screen: TabNav},
+        Details: { screen: RecipeDetailsScreen }
     },
     {
         headerMode: "none"

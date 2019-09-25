@@ -5,13 +5,16 @@ import {
     TouchableOpacity, 
     TouchableWithoutFeedback
 } from 'react-native';
+import {withNavigation} from "react-navigation";
 
-//import CustomIcon from "./CustomIcon";
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import styles from './Styles/NavBarStyle';
 
 class NavBar extends React.Component{
+    goBack = () => {
+        const { navigation } = this.props;
+        navigation.goBack();
+    };
     pressFavorite = () =>{
         const {onPressFavorite} = this.props;
         if(typeof onPressFavorite === "function"){
@@ -23,7 +26,7 @@ class NavBar extends React.Component{
         const {leftButton} = this.props;
         if(leftButton){
             return (
-                <TouchableOpacity>
+                <TouchableOpacity onPress={this.goBack}>
                     <Icon name="chevron-left" size={20} color="#000" />
                 </TouchableOpacity>
             )
@@ -51,7 +54,9 @@ class NavBar extends React.Component{
     render(){
         const {title} = this.props;
         return(
-            <View {...this.props} style={styles.navBar}>
+            <View 
+                {...this.props} 
+                style={styles.navBar}>
                 <View style={styles.leftContainer}>
                    {this.backButton()} 
                 </View>
@@ -66,4 +71,4 @@ class NavBar extends React.Component{
     }
 }
 
-export default NavBar;
+export default withNavigation(NavBar);

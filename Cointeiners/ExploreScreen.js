@@ -81,7 +81,7 @@ export default class ExploreScreen extends Component{
 		<View style={[styles.mainScreen]} >
 			<NavBar leftButton={false} rightButton={false} title="Explore" />
 			<View style={styles.container}>
-			{this.renderList()}
+				{this.renderList()}
 			</View>
 			<TabBar selected="explore"/>
 		</View>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View,Text,Image,ScrollView} from 'react-native';
+import {View, Text, Image, ScrollView, StatusBar} from 'react-native';
 import styles from './Styles/RecipeDetailsScreenStyle';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconMaterial from 'react-native-vector-icons/MaterialIcons';
@@ -95,6 +95,7 @@ export default class RecipeDetailsScreen extends Component{
             <View style={styles.container}>
                 <View style={styles.imageConteiner}>
                     {this.renderImage()}
+                    <View style={styles.darkener} />
                 </View>
                 {this.renderInfo()}
                 {this.renderIngredients()}
@@ -109,12 +110,13 @@ export default class RecipeDetailsScreen extends Component{
         //const {favorite} = this.state;
         return(
             <View>
+                <StatusBar barStyle="light-content"/>
                 <NavBar 
                 leftButton={true}
                 rightButton={true}
+                transparent={true}
                 onPressFavorite={this.pressFavorite}
                 favorite={this.state.favorite}
-                title={data.name} 
                 style={styles.navBar} />
                 <ScrollView>
                     {this.renderContent()}

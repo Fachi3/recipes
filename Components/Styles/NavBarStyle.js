@@ -11,9 +11,23 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "flex-start"
     },
+    alternate: {
+        color: Colors.whiteFull
+    },
+    transparent: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: "transparent",
+        zIndex: 10
+    },
     title:{
         ...Fonts.style.recipeNameCard,
         fontWeight: 'bold'
+    },
+    favIco: {
+        color: Colors.blackFull,
     },
     leftContainer: {
         width: Metrics.buttonSize,

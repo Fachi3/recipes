@@ -5,6 +5,7 @@ import styles from './Styles/ExploreScreenStyle';
 import NavBar from '../Components/NavBar';
 import TabBar from '../Components/TabBar';
 import RecipeRow from '../Components/RecipeRow';
+import RecommendationBox from '../Components/RecommendationBox';
 
 const dataList = [
 	{
@@ -54,7 +55,7 @@ const dataList = [
 	}
 ];
 
-export default class ExploreScreen extends Component{
+export default class ExploreScreen extends Component {
 	static navigationOptions = {
 		title: "Explore"
 	};
@@ -68,23 +69,28 @@ export default class ExploreScreen extends Component{
 	keyExtractor = (item, index) => item.id;
 	renderList = () => {
 		return(
-		<FlatList
-			keyExtractor={this.keyExtractor}
-			data={dataList}
-			renderItem={({item}) => <RecipeRow data={item} />}
-		/> 
+			<FlatList
+				keyExtractor={this.keyExtractor}
+				data={dataList}
+				renderItem={({item}) => <RecipeRow data={item} />}
+			/> 
 		);
+	}
+
+	renderRecommended = () => {
+		return <RecommendationBox data={dataList} />;
 	}
 
 	render(){
 		return(
-		<View style={[styles.mainScreen]} >
-			<NavBar leftButton={false} rightButton={false} title="Explore" />
-			<View style={styles.container}>
-				{this.renderList()}
+			<View style={[styles.mainScreen]} >
+				<NavBar leftButton={false} rightButton={false} title="Explore" />
+				<View style={styles.container}>
+					<RecommendationBox data={dataList} />
+					{this.renderList()}
+				</View>
+				<TabBar selected="explore"/>
 			</View>
-			<TabBar selected="explore"/>
-		</View>
 		);
 	}
 }

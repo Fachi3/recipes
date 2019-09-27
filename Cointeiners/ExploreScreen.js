@@ -70,6 +70,7 @@ export default class ExploreScreen extends Component {
 	renderList = () => {
 		return(
 			<FlatList
+				ListHeaderComponent={this.renderRecommended}
 				keyExtractor={this.keyExtractor}
 				data={dataList}
 				renderItem={({item}) => <RecipeRow data={item} />}
@@ -86,7 +87,6 @@ export default class ExploreScreen extends Component {
 			<View style={[styles.mainScreen]} >
 				<NavBar leftButton={false} rightButton={false} title="Explore" />
 				<View style={styles.container}>
-					<RecommendationBox data={dataList} />
 					{this.renderList()}
 				</View>
 				<TabBar selected="explore"/>

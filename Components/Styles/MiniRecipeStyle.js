@@ -8,10 +8,13 @@ export default StyleSheet.create({
         height: 128,
         alignItems: "center",
         overflow: "hidden",
-        borderRadius: Metrics.borderRadius
+        borderRadius: Metrics.borderRadius,
+    },
+    imageConteiner: {
+        height: 128,
     },
     recipeImage: {
         width: 208,
-        height: 128
+        height: 128,
     }
 });

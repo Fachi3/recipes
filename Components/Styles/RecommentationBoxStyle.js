@@ -5,7 +5,7 @@ export default StyleSheet.create({
     container: {
         marginBottom: Metrics.baseSpace,
         justifyContent: "center",
-        alignItems: "stretch"
+        alignItems: "stretch",
     },
     header: {
         paddingHorizontal: Metrics.baseSpace,

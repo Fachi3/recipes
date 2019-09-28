@@ -33,7 +33,8 @@ export default StyleSheet.create({
     cellIcon: {
         fontSize: Metrics.icons.small,
         color: Colors.blackFull,
-        marginRight: Metrics.smallSpace
+        marginRight: Metrics.smallSpace,
+        paddingRight: 10
     },
     cellText: {
         paddingLeft: 20,
@@ -44,5 +45,9 @@ export default StyleSheet.create({
         lineHeight: 24,
         letterSpacing: 0.5,
         color: Colors.blackFull
+    },
+    title:{
+        ...Fonts.style.recipeNameCard,
+        fontWeight: 'bold'
     },
 });

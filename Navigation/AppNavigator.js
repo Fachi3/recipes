@@ -2,14 +2,16 @@ import { createAppContainer, createStackNavigator, createBottomTabNavigator } fr
 
 import GenericScreen from "../Cointeiners/GenericScreen";
 import ExploreScreen from "../Cointeiners/ExploreScreen";
-import CategoryScreen from "../Cointeiners/CategoryScreen";
+import CategoriesScreen from "../Cointeiners/CategoriesScreen";
 import RecipeDetailsScreen from "../Cointeiners/RecipeDetailsScreen";
+import FavoritesScreen from "../Cointeiners/FavoriteScreen";
+import CategoryScreen from "../Cointeiners/CategoryScreen";
 
 const TabNav = createBottomTabNavigator(
     {
         Explore: {screen: ExploreScreen},
-        Categories: {screen: CategoryScreen},
-        Favorites: {screen: GenericScreen},
+        Categories: {screen: CategoriesScreen},
+        Favorites: {screen: FavoritesScreen},
     },
     {
         headerMode: "none",
@@ -21,7 +23,8 @@ const TabNav = createBottomTabNavigator(
 const AppNavigator = createStackNavigator(
     {
         Home: {screen: TabNav},
-        Details: { screen: RecipeDetailsScreen }
+        Details: {screen: RecipeDetailsScreen},
+        Category: {screen: CategoryScreen}
     },
     {
         headerMode: "none"

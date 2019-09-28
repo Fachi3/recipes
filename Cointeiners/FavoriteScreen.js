@@ -54,11 +54,15 @@ const dataList = [
 	}
 ];
 
-export default class CategoryScreen extends Component {
+export default class FavoriteScreen extends Component {
+	static navigationOptions = {
+		title: "Explore"
+	};
+
 	constructor(props){
 		super(props);
 
-		console.log("Constructor in category");
+		console.log("Constructor in explorer");
 	}
 
 	keyExtractor = (item, index) => item.id;
@@ -73,20 +77,13 @@ export default class CategoryScreen extends Component {
 	}
 
 	render(){
-		const {navigation} = this.props;
-		const category = navigation.getParam("category", {});
-		console.log(category);
 		return(
 			<View style={[styles.mainScreen]} >
-				<NavBar 
-					leftButton={true} 
-					rightButton={false} 
-					title={category.name} 
-					setIcon={true} 
-					dataIcon={category.icon} />
+				<NavBar leftButton={false} rightButton={false} title="Favorites" />
 				<View style={styles.container}>
 					{this.renderList()}
 				</View>
+				<TabBar selected="favorites"/>
 			</View>
 		);
 	}

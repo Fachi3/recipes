@@ -46,5 +46,10 @@ export default StyleSheet.create({
     },
     favorite: {
         color: Colors.darkOrange
-    }
+    },
+    cellIcon: {
+        fontSize: Metrics.icons.small,
+        color: Colors.blackFull,
+        marginRight: Metrics.smallSpace
+    },
 });

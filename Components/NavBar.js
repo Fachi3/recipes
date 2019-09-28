@@ -7,14 +7,23 @@ import {
 } from 'react-native';
 import {withNavigation} from "react-navigation";
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from './Styles/NavBarStyle';
 
 class NavBar extends React.Component{
     goBack = () => {
         const { navigation } = this.props;
         navigation.goBack();
-    };
+    }
+
+    iconSet = () => {
+        const {setIcon, dataIcon} = this.props;
+        if(setIcon){
+            console.log("set icon exist");
+            return <Icon style={styles.cellIcon} name={dataIcon} size={20} color="#000" />;
+        }
+    }
+
     pressFavorite = () =>{
         const {onPressFavorite} = this.props;
         if(typeof onPressFavorite === "function"){
@@ -51,6 +60,7 @@ class NavBar extends React.Component{
             }
         }
     }
+
     render(){
         const {title, transparent} = this.props;
         return(
@@ -61,7 +71,7 @@ class NavBar extends React.Component{
                    {this.backButton()} 
                 </View>
                 <View style={styles.titleWrapper}>
-                    <Text style={styles.title}>{title}</Text>
+                    <Text style={styles.title}>{this.iconSet()} {title}</Text>
                 </View>
                 <View style={styles.rightContainer}>
                     {this.rightButton()}

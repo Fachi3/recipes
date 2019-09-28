@@ -23,7 +23,6 @@ class MiniRecipe extends React.PureComponent {
   };
   render() {
     const { data } = this.props;
-    console.log("recommended", data);
     return (
       <TouchableOpacity onPress={this.onPress}>
         <View style={styles.container}>{this.renderImage()}</View>

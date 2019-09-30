@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {View, FlatList} from 'react-native';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
 import styles from './Styles/ExploreScreenStyle';
 
 import NavBar from '../Components/NavBar';
 import TabBar from '../Components/TabBar';
 import RecipeRow from '../Components/RecipeRow';
 import RecommendationBox from '../Components/RecommendationBox';
+
 
 const dataList = [
 	{
@@ -55,7 +58,10 @@ const dataList = [
 	}
 ];
 
+@observer
 export default class ExploreScreen extends Component {
+	@observable counter = 0;
+
 	static navigationOptions = {
 		title: "Explore"
 	};
@@ -64,6 +70,11 @@ export default class ExploreScreen extends Component {
 		super(props);
 
 		console.log("Constructor in explorer");
+
+		setInterval(()  => {
+			this.counter++;
+			console.log("this.counter: ", this.counter);
+		}, 10000);
 	}
 
 	keyExtractor = (item, index) => item.id;
@@ -85,7 +96,7 @@ export default class ExploreScreen extends Component {
 	render(){
 		return(
 			<View style={[styles.mainScreen]} >
-				<NavBar leftButton={false} rightButton={false} title="Explore" />
+				<NavBar leftButton={false} rightButton={false} title={`Explore - ${this.counter}`} />
 				<View style={styles.container}>
 					{this.renderList()}
 				</View>

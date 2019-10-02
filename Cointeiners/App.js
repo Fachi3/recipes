@@ -1,10 +1,17 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from "react";
 
-import AppNavigator from "../Navigation/AppNavigator";
+import { Provider } from "mobx-react";
 
-export default class App extends Component{
-  render() {
-    return <AppNavigator />;
-  }
+import stores from "../MobX";
+
+import AppNavigation from "../Navigation/AppNavigation";
+
+export default class App extends Component {
+  	render() {
+		return (
+			<Provider {...stores}>
+				<AppNavigation />
+			</Provider>
+		);
+  	}
 }

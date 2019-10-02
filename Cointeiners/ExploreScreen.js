@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, FlatList} from 'react-native';
 import {observable} from 'mobx';
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
 import styles from './Styles/ExploreScreenStyle';
 
 import NavBar from '../Components/NavBar';
@@ -9,6 +9,7 @@ import TabBar from '../Components/TabBar';
 import RecipeRow from '../Components/RecipeRow';
 import RecommendationBox from '../Components/RecommendationBox';
 
+import TestStore from '../MobX/TestStore';
 
 const dataList = [
 	{
@@ -58,9 +59,10 @@ const dataList = [
 	}
 ];
 
+@inject("test")
 @observer
 export default class ExploreScreen extends Component {
-	@observable counter = 0;
+	timer = null;
 
 	static navigationOptions = {
 		title: "Explore"
@@ -71,10 +73,15 @@ export default class ExploreScreen extends Component {
 
 		console.log("Constructor in explorer");
 
-		setInterval(()  => {
-			this.counter++;
-			console.log("this.counter: ", this.counter);
-		}, 10000);
+		const {test} = this.props;
+	}
+
+	componentDidUpdate = (prevProps, prevState) => {
+		const {test} = this.props;
+
+		if(test.counter >= 5) {
+			test.stop();
+		}
 	}
 
 	keyExtractor = (item, index) => item.id;
@@ -94,9 +101,11 @@ export default class ExploreScreen extends Component {
 	}
 
 	render(){
+		const {test} = this.props;
+
 		return(
 			<View style={[styles.mainScreen]} >
-				<NavBar leftButton={false} rightButton={false} title={`Explore - ${this.counter}`} />
+				<NavBar leftButton={false} rightButton={false} title={`Explore - ${test.doubleValue}`} />
 				<View style={styles.container}>
 					{this.renderList()}
 				</View>

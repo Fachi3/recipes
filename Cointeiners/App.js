@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import { Provider } from "mobx-react";
+import { Provider } from "mobx-react/native";
 
 import stores from "../MobX";
 
-import AppNavigation from "../Navigation/AppNavigation";
+import AppNavigation from "../Navigation/AppNavigator";
 
 export default class App extends Component {
   	render() {

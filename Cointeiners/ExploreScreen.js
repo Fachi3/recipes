@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
 import {View, FlatList} from 'react-native';
-import {observable} from 'mobx';
-import {observer, inject} from 'mobx-react';
+import {observer, inject} from 'mobx-react/native';
 import styles from './Styles/ExploreScreenStyle';
 
 import NavBar from '../Components/NavBar';
 import TabBar from '../Components/TabBar';
 import RecipeRow from '../Components/RecipeRow';
 import RecommendationBox from '../Components/RecommendationBox';
-
-import TestStore from '../MobX/TestStore';
 
 const dataList = [
 	{
@@ -72,17 +69,18 @@ export default class ExploreScreen extends Component {
 		super(props);
 
 		console.log("Constructor in explorer");
-
+		
 		const {test} = this.props;
+		test.start();
 	}
 
 	componentDidUpdate = (prevProps, prevState) => {
-		const {test} = this.props;
-
-		if(test.counter >= 5) {
+		const { test } = this.props;
+		if (test.counter >= 5) {
 			test.stop();
 		}
-	}
+	};
+	
 
 	keyExtractor = (item, index) => item.id;
 	renderList = () => {
